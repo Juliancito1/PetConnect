@@ -2,31 +2,73 @@ import React from "react";
 import { Link } from "react-router";
 import Banner from "../../images/Banner.jpg";
 import { HomeCards } from "../../components/HomeCards/HomeCards";
+import { LostPetCard } from "../../components/LostPetCard/LostPetCard";
+import { TestimonialCard } from "../../components/TestimonialCard/TestimonialCard";
+import HomeCard from "../../images/HomeCard.jpg";
+
+const mascotasAdoptables = [
+  {
+    nombre: "Max",
+    genero: "Macho",
+    edad: "2 años",
+    tamaño: "Grande",
+  },
+  {
+    nombre: "Max",
+    genero: "Macho",
+    edad: "2 años",
+    tamaño: "Grande",
+  },
+  {
+    nombre: "Max",
+    genero: "Macho",
+    edad: "2 años",
+    tamaño: "Grande",
+  },
+  {
+    nombre: "Max",
+    genero: "Macho",
+    edad: "2 años",
+    tamaño: "Grande",
+  },
+];
 
 const mascotasPerdidas = [
   {
-    nombre: "Max",
-    genero: "Macho",
-    edad: "2 años",
-    tamaño: "Grande",
+    nombre: "Thor",
+    imagen: HomeCard,
+    ubicacion: "Palermo",
   },
   {
-    nombre: "Max",
-    genero: "Macho",
-    edad: "2 años",
-    tamaño: "Grande",
+    nombre: "Milo",
+    imagen: HomeCard,
+    ubicacion: "Caballito",
   },
   {
-    nombre: "Max",
-    genero: "Macho",
-    edad: "2 años",
-    tamaño: "Grande",
+    nombre: "Odie",
+    imagen: HomeCard,
+    ubicacion: "Belgrano",
+  },
+];
+
+const testimonios = [
+  {
+    foto: HomeCard,
+    texto:
+      "¡Encontramos a nuestro querido Roco gracias a esta plataforma! El proceso fue súper sencillo y el equipo muy amable. ¡No podríamos estar más felices!",
+    autor: "Familia Gómez",
   },
   {
-    nombre: "Max",
-    genero: "Macho",
-    edad: "2 años",
-    tamaño: "Grande",
+    foto: HomeCard,
+    texto:
+      "Adoptar a Nala fue la mejor decisión. La información en su perfil era muy completa y nos ayudó a saber que era la indicada para nosotros.",
+    autor: "Carlos y Sofía",
+  },
+  {
+    foto: HomeCard,
+    texto:
+      "Perder a mi gato fue una pesadilla, pero gracias a un reporte en PetConnect, una vecina lo encontró y pudimos reunirnos. ¡Eternamente agradecida!",
+    autor: "Juana Pérez",
   },
 ];
 
@@ -70,18 +112,58 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      <section className="bg-emerald-50">
-        <div className="flex flex-col items-center md:ms-15 md:block my-5">
-          <h1 className=" text-4xl">Esperando un hogar</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            {mascotasPerdidas.map((mascota) => (
-              <HomeCards mascota={mascota} />
+      {/* Sección: Esperando un hogar */}
+      <section className="bg-emerald-50 py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center md:text-left">
+            Esperando un hogar
+          </h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {mascotasAdoptables.map((mascota, index) => (
+              <HomeCards key={index} mascota={mascota} />
             ))}
           </div>
           <div className="text-center">
-            <button className="bg-emerald-100 hover:bg-emerald-700 text-black font-bold py-2 px-4 rounded-2xl cursor-pointer">
+            <button className="bg-emerald-100 hover:bg-emerald-200 text-gray-800 font-bold py-3 px-6 rounded-2xl cursor-pointer transition-colors duration-300">
               Ver todos los adoptables
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección: Ayúdalos a volver a casa */}
+      <section className="bg-emerald-50 py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center md:text-left">
+            Ayúdalos a volver a casa
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {mascotasPerdidas.map((mascota, index) => (
+              <LostPetCard key={index} mascota={mascota} />
+            ))}
+          </div>
+          <div className="text-center">
+            <button className="bg-emerald-100 hover:bg-emerald-200 text-gray-800 font-bold py-3 px-6 rounded-2xl cursor-pointer transition-colors duration-300">
+              Ver todos los reportes
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección: Historias que cambian vidas */}
+      <section className="bg-emerald-50 py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4 text-center">
+            Historias que cambian vidas
+          </h2>
+          <p className="text-emerald-600 text-center mb-8 max-w-3xl mx-auto">
+            Vea cómo PetConnect ha ayudado a unir a mascotas con sus nuevas
+            familias para siempre.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {testimonios.map((testimonio, index) => (
+              <TestimonialCard key={index} testimonio={testimonio} />
+            ))}
           </div>
         </div>
       </section>
