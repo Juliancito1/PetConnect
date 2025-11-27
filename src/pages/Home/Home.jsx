@@ -1,6 +1,34 @@
 import React from "react";
 import { Link } from "react-router";
 import Banner from "../../images/Banner.jpg";
+import { HomeCards } from "../../components/HomeCards/HomeCards";
+
+const mascotasPerdidas = [
+  {
+    nombre: "Max",
+    genero: "Macho",
+    edad: "2 años",
+    tamaño: "Grande",
+  },
+  {
+    nombre: "Max",
+    genero: "Macho",
+    edad: "2 años",
+    tamaño: "Grande",
+  },
+  {
+    nombre: "Max",
+    genero: "Macho",
+    edad: "2 años",
+    tamaño: "Grande",
+  },
+  {
+    nombre: "Max",
+    genero: "Macho",
+    edad: "2 años",
+    tamaño: "Grande",
+  },
+];
 
 export const Home = () => {
   return (
@@ -42,12 +70,21 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      <div className="ms-15 my-3">
-        <h1 className=" text-4xl">Esperando un hogar</h1>
-        <div className="grid grid-cols-4">
-            
+      <section className="bg-emerald-50">
+        <div className="flex flex-col items-center md:ms-15 md:block my-5">
+          <h1 className=" text-4xl">Esperando un hogar</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            {mascotasPerdidas.map((mascota) => (
+              <HomeCards mascota={mascota} />
+            ))}
+          </div>
+          <div className="text-center">
+            <button className="bg-emerald-100 hover:bg-emerald-700 text-black font-bold py-2 px-4 rounded-2xl cursor-pointer">
+              Ver todos los adoptables
+            </button>
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
